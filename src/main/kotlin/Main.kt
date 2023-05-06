@@ -5,12 +5,32 @@ fun main() {
     println("The hero announces her presence to the world")
     println(HERO_NAME)
     var playerLevel = 4
+    val playerClass = "paladin"
+    val hasBeFriendedBarbarians = true
+    val hasAngeredBarbarians = false
     println("She has level: $playerLevel")
     println("The hero embarks on her journey to locate the enchanted sword.")
     playerLevel += 1
     println("She has level up to $playerLevel")
 
+    println("The hero looks up to bounty board and sees: ")
 
+    val quest = when(playerLevel) {
+        1 -> "Meet Mr. Bubbles in Sweet kingdom"
+        in 2..5 -> {
+            if(!hasAngeredBarbarians && (hasBeFriendedBarbarians || playerClass == "barbarian")) {
+                "Talk to barbarians to prevent war!"
+            } else "Defend the city from barbarians invasions"
+        }
+        6 -> "Find enchanted sword!"
+        7 -> "Defeat a <WorldEater>, a giant worm"
+        8 -> "Build a house to your villages"
+        else -> "No quest available yet"
+    }
+
+    println(quest)
+
+    /*
     // Exercise 1
     var hasSteed = false
 
@@ -35,5 +55,5 @@ fun main() {
     // Exercise 3
     println("$HERO_NAME meets a <Magic Mirror>. She looks into the mirror and sees: ")
     println(HERO_NAME.reversed())
-
+    */
 }
